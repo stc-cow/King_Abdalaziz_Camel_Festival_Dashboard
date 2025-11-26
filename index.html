@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>King Abdulaziz Camel Festival 2025 – Tickets Insight Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page">
+
+    <!-- TOP HEADER -->
+    <header class="top-header">
+      <div class="brand-group">
+        <div class="brand-item">
+          <!-- STC logo placeholder -->
+          <div class="logo-circle stc-logo">STC</div>
+          <span class="brand-label">STC COW</span>
+        </div>
+        <div class="brand-center">
+          <h1>King Abdulaziz Camel Festival 2025</h1>
+          <p>Tickets Insight & COW Performance Dashboard</p>
+        </div>
+        <div class="brand-item">
+          <!-- ACES logo placeholder -->
+          <div class="logo-circle aces-logo">ACES</div>
+          <span class="brand-label">ACES Managed Services</span>
+        </div>
+      </div>
+
+      <div class="festival-tag">
+        🐪 Camel Festival • COWs Serving Festival Area • Live Tickets Data
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-layout">
+
+      <!-- KPI CARDS -->
+      <section class="kpi-section">
+        <div class="kpi-card">
+          <div class="kpi-label">Total Tickets</div>
+          <div class="kpi-value" id="totalTickets">0</div>
+          <div class="kpi-sub">All rows in Google Sheet</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Scanned Tickets</div>
+          <div class="kpi-value accent" id="scannedTickets">0</div>
+          <div class="kpi-sub">Status = "Scanned"</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Pending / Not Scanned</div>
+          <div class="kpi-value warning" id="pendingTickets">0</div>
+          <div class="kpi-sub">Total - Scanned</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Active Gates</div>
+          <div class="kpi-value success" id="gateCount">0</div>
+          <div class="kpi-sub">Unique gates from data</div>
+        </div>
+      </section>
+
+      <!-- TWO COLUMNS: TABLE + SUMMARY -->
+      <section class="grid-two">
+
+        <!-- Latest tickets table -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Latest Tickets</h2>
+            <span class="card-subtitle">Preview from Google Sheets CSV</span>
+          </div>
+          <div class="table-wrapper">
+            <table class="tickets-table">
+              <thead id="ticketsHead">
+                <!-- Filled by JS -->
+              </thead>
+              <tbody id="ticketsBody">
+                <!-- Filled by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Summary & notes -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Dashboard Notes</h2>
+            <span class="card-subtitle">Configuration & mapping</span>
+          </div>
+          <div class="card-body">
+            <ul class="note-list">
+              <li><strong>Data Source:</strong> Live Google Sheet (published as CSV).</li>
+              <li>
+                <strong>Scanned Tickets:</strong> We look for a column called
+                <code>Status</code> with value <code>Scanned</code>. You can change this
+                mapping in <code>js/app.js</code>.
+              </li>
+              <li>
+                <strong>Gates:</strong> We look for a column called <code>Gate</code> to
+                calculate number of active gates (unique values).
+              </li>
+              <li>
+                <strong>Next step:</strong> Add COW performance (VSAT, fuel, power KPIs) and
+                link each ticket gate to its serving COW.
+              </li>
+              <li>
+                Branding theme combines ACES navy, STC gradient, and Camel Festival desert gold.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span>© 2025 King Abdulaziz Camel Festival — Tickets & COW Insight Dashboard</span>
+      <span class="footer-right">Powered by ACES · STC COW · Eng. Bannaga Altieb</span>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js" defer></script>
+</body>
+</html>
