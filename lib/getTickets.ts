@@ -44,12 +44,20 @@ const fallbackTickets: Ticket[] = [
 
 export async function getTickets(): Promise<Ticket[]> {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+
     const response = await fetch(
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSbbDDjYaOGEd9bgF9IKaarmaWw-Yz2Pd0f_C4gelacmktiqjris1vqBufc-G-acPQJ12kOhBZYHpeR/pub?output=csv",
-      { next: { revalidate: 300 } }
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSbbDDjYaOGEd9bgF9IKaarmaWw-Yz2Pd0f_C4gelacmktiqjris1vqBufc-G-acPQJ12kOhBZYHpeR/pub?output=csv',
+      {
+        next: { revalidate: 300 },
+        signal: controller.signal,
+      }
     );
 
-    if (!response.ok) throw new Error("Failed to fetch CSV");
+    clearTimeout(timeoutId);
+
+    if (!response.ok) throw new Error('Failed to fetch CSV');
 
     const csv = await response.text();
     const lines = csv.trim().split("\n");
@@ -87,7 +95,8 @@ export async function getTickets(): Promise<Ticket[]> {
 
     return tickets;
   } catch (error) {
-    console.warn("Using fallback tickets due to fetch error:", error);
-    return fallbackTickets;
+    console.error('Error fetching tickets:', error);
+    // Return empty array on timeout or network error
+    return [];
   }
 }
