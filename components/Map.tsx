@@ -86,3 +86,6 @@ function MapComponent({ tickets }: MapProps) {
     </div>
   );
 }
+
+export { MapComponent as Map };
+export default MapComponent;
