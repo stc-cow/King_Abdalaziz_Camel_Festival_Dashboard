@@ -8,10 +8,10 @@ interface TicketsTableProps {
 }
 
 const statusColors: Record<string, string> = {
-  'open': 'bg-red-100 text-red-800',
-  'closed': 'bg-green-100 text-green-800',
-  'pending': 'bg-yellow-100 text-yellow-800',
-  'resolved': 'bg-green-100 text-green-800',
+  'open': 'bg-red-500/30 text-red-50 border border-red-200/40',
+  'closed': 'bg-green-500/30 text-green-50 border border-green-200/40',
+  'pending': 'bg-yellow-500/30 text-yellow-50 border border-yellow-200/40',
+  'resolved': 'bg-green-500/30 text-green-50 border border-green-200/40',
 };
 
 const getStatusColor = (status: string) => {
@@ -41,7 +41,7 @@ export function TicketsTable({ tickets }: TicketsTableProps) {
   return (
     <div className="flex flex-col gap-2 h-full">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 flex-shrink-0">
-        <h3 className="text-xs sm:text-sm font-semibold text-gray-800">Tickets</h3>
+        <h3 className="text-xs sm:text-sm font-semibold text-white drop-shadow">Tickets</h3>
         <input
           type="text"
           placeholder="Search..."
@@ -50,35 +50,35 @@ export function TicketsTable({ tickets }: TicketsTableProps) {
             setSearchTerm(e.target.value);
             setCurrentPage(1);
           }}
-          className="w-full sm:w-40 px-2 py-1 border border-gray-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-[#7d2cff]"
+          className="w-full sm:w-40 px-2 py-1 border border-white/30 bg-white/10 text-white placeholder:text-white/70 rounded text-xs focus:outline-none focus:ring-2 focus:ring-[#7d2cff]"
         />
       </div>
 
-      <div className="flex-1 overflow-y-auto">
-        <table className="w-full text-xs">
-          <thead className="sticky top-0 bg-white">
-            <tr className="border-b border-gray-300">
-              <th className="text-left py-1 px-2 font-semibold text-gray-700">ID</th>
-              <th className="text-left py-1 px-2 font-semibold text-gray-700 hidden sm:table-cell">Site</th>
-              <th className="text-left py-1 px-2 font-semibold text-gray-700 hidden md:table-cell">Type</th>
-              <th className="text-left py-1 px-2 font-semibold text-gray-700 hidden lg:table-cell">Date</th>
-              <th className="text-left py-1 px-2 font-semibold text-gray-700">Status</th>
-              <th className="text-left py-1 px-2 font-semibold text-gray-700 hidden sm:table-cell">Age</th>
+      <div className="flex-1 overflow-y-hidden">
+        <table className="w-full text-xs text-white/90">
+          <thead className="bg-white/10">
+            <tr className="border-b border-white/20">
+              <th className="text-left py-1 px-2 font-semibold">ID</th>
+              <th className="text-left py-1 px-2 font-semibold hidden sm:table-cell">Site</th>
+              <th className="text-left py-1 px-2 font-semibold hidden md:table-cell">Type</th>
+              <th className="text-left py-1 px-2 font-semibold hidden lg:table-cell">Date</th>
+              <th className="text-left py-1 px-2 font-semibold">Status</th>
+              <th className="text-left py-1 px-2 font-semibold hidden sm:table-cell">Age</th>
             </tr>
           </thead>
           <tbody>
             {displayedTickets.map(ticket => (
-              <tr key={ticket.id} className="border-b border-gray-100 hover:bg-gray-50">
-                <td className="py-1 px-2 font-mono text-gray-900">{ticket.id}</td>
-                <td className="py-1 px-2 text-gray-700 hidden sm:table-cell text-xs">{ticket.cowSite.substring(0, 8)}</td>
-                <td className="py-1 px-2 text-gray-700 hidden md:table-cell text-xs">{ticket.issueType.substring(0, 8)}</td>
-                <td className="py-1 px-2 text-gray-700 hidden lg:table-cell text-xs">{ticket.openDate.substring(0, 5)}</td>
+              <tr key={ticket.id} className="border-b border-white/10 hover:bg-white/5">
+                <td className="py-1 px-2 font-mono text-white">{ticket.id}</td>
+                <td className="py-1 px-2 hidden sm:table-cell text-xs text-white/80">{ticket.cowSite.substring(0, 8)}</td>
+                <td className="py-1 px-2 hidden md:table-cell text-xs text-white/80">{ticket.issueType.substring(0, 8)}</td>
+                <td className="py-1 px-2 hidden lg:table-cell text-xs text-white/80">{ticket.openDate.substring(0, 5)}</td>
                 <td className="py-1 px-2">
                   <span className={`px-2 py-0.5 rounded text-xs font-medium ${getStatusColor(ticket.status)}`}>
                     {ticket.status.substring(0, 5)}
                   </span>
                 </td>
-                <td className="py-1 px-2 font-semibold text-gray-900 hidden sm:table-cell">{ticket.agingDays}d</td>
+                <td className="py-1 px-2 font-semibold text-white hidden sm:table-cell">{ticket.agingDays}d</td>
               </tr>
             ))}
           </tbody>
@@ -86,7 +86,7 @@ export function TicketsTable({ tickets }: TicketsTableProps) {
       </div>
 
       {displayedTickets.length === 0 && (
-        <div className="py-2 text-center text-gray-500 text-xs flex-shrink-0">
+        <div className="py-2 text-center text-white/70 text-xs flex-shrink-0">
           No tickets found
         </div>
       )}
@@ -95,17 +95,17 @@ export function TicketsTable({ tickets }: TicketsTableProps) {
         <button
           onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
           disabled={currentPage === 1}
-          className="px-2 py-1 bg-gray-100 text-gray-700 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-200 text-xs"
+          className="px-2 py-1 bg-white/10 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/20 text-xs border border-white/20"
         >
           Prev
         </button>
-        <span className="text-xs text-gray-600">
+        <span className="text-xs text-white/80">
           {currentPage}/{totalPages || 1}
         </span>
         <button
           onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
           disabled={currentPage === totalPages || totalPages === 0}
-          className="px-2 py-1 bg-gray-100 text-gray-700 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-200 text-xs"
+          className="px-2 py-1 bg-white/10 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/20 text-xs border border-white/20"
         >
           Next
         </button>
