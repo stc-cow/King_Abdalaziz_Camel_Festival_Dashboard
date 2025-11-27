@@ -1,22 +1,12 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { Ticket } from '@/lib/getTickets';
 import { MetricCard } from '@/components/MetricCard';
 import { BarChart } from '@/components/Charts/BarChart';
 import { PieChart } from '@/components/Charts/PieChart';
 import { LineChart } from '@/components/Charts/LineChart';
 import { TicketsTable } from '@/components/TicketsTable';
-
-// Dynamically load map (no SSR)
-const Map = dynamic(() => import('@/components/Map').then(mod => ({ default: mod.Map })), {
-  ssr: false,
-  loading: () => (
-    <div className="flex items-center justify-center h-full bg-white/70 backdrop-blur-sm rounded-xl">
-      Loading map...
-    </div>
-  ),
-});
+import { Map } from '@/components/Map';
 
 interface DashboardProps {
   tickets: Ticket[];
