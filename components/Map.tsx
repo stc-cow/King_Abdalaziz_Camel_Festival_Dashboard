@@ -16,8 +16,8 @@ export function Map({ tickets }: MapProps) {
     import('leaflet').then(L => {
       const map = L.map(mapContainer.current!).setView([24.4539, 46.5260], 6);
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap',
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles © Esri',
         maxZoom: 19,
       }).addTo(map);
 
@@ -66,9 +66,9 @@ export function Map({ tickets }: MapProps) {
   }, [tickets]);
 
   return (
-    <div className="flex flex-col h-full gap-2">
-      <h3 className="text-xs sm:text-sm font-semibold text-gray-800 flex-shrink-0">COW Sites Map</h3>
-      <div ref={mapContainer} className="flex-1 rounded-lg border border-gray-200" />
+    <div className="flex flex-col h-full gap-2 text-white">
+      <h3 className="text-xs sm:text-sm font-semibold flex-shrink-0 drop-shadow">Satellite Map of Cow Distributions</h3>
+      <div ref={mapContainer} className="flex-1 rounded-lg border border-white/20 shadow-lg overflow-hidden" />
       <div className="flex gap-3 flex-wrap text-xs flex-shrink-0">
         <div className="flex items-center gap-1">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ef4444' }} />

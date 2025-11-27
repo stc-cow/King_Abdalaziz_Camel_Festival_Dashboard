@@ -6,8 +6,8 @@ interface LineChartProps {
 export function LineChart({ data, title }: LineChartProps) {
   if (!data || data.length === 0) {
     return (
-      <div className="bg-white/70 backdrop-blur-sm rounded-lg shadow-md p-3 h-full flex items-center justify-center">
-        <p className="text-gray-400 text-xs sm:text-sm">No data</p>
+      <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg shadow-lg p-3 h-full flex items-center justify-center text-white">
+        <p className="text-white/70 text-xs sm:text-sm">No data</p>
       </div>
     );
   }
@@ -26,9 +26,9 @@ export function LineChart({ data, title }: LineChartProps) {
   const pathData = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
 
   return (
-    <div className="bg-white/70 backdrop-blur-sm rounded-lg shadow-md p-3 h-full flex flex-col">
-      {title && <h3 className="text-xs sm:text-sm font-semibold mb-2 text-gray-800 flex-shrink-0">{title}</h3>}
-      <div className="flex-1 flex justify-center overflow-x-auto">
+    <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg shadow-lg p-3 h-full flex flex-col text-white">
+      {title && <h3 className="text-xs sm:text-sm font-semibold mb-2 flex-shrink-0 drop-shadow">{title}</h3>}
+      <div className="flex-1 flex justify-center">
         <svg width={chartWidth} height={chartHeight} viewBox={`0 0 ${chartWidth} ${chartHeight}`}>
           {[0, 0.25, 0.5, 0.75, 1].map((ratio, i) => (
             <line
@@ -37,7 +37,7 @@ export function LineChart({ data, title }: LineChartProps) {
               y1={padding + ratio * (chartHeight - padding * 2)}
               x2={chartWidth - padding}
               y2={padding + ratio * (chartHeight - padding * 2)}
-              stroke="#e5e7eb"
+              stroke="#94a3b8"
               strokeWidth="1"
             />
           ))}
