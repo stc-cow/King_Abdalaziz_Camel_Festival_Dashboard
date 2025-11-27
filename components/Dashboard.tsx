@@ -9,7 +9,7 @@ import { LineChart } from '@/components/Charts/LineChart';
 import { TicketsTable } from '@/components/TicketsTable';
 
 // Dynamically load map (no SSR)
-const Map = dynamic(() => import('@/components/Map').then(mod => mod.default), {
+const Map = dynamic(() => import('@/components/Map').then(mod => ({ default: mod.Map })), {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center h-full bg-white/70 backdrop-blur-sm rounded-xl">
