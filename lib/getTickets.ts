@@ -61,6 +61,7 @@ export async function getTickets(): Promise<Ticket[]> {
     return tickets;
   } catch (error) {
     console.error('Error fetching tickets:', error);
+    // Return empty array on timeout or network error
     return [];
   }
 }
