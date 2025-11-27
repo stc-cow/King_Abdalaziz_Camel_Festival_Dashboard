@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "export": "node -e \"require('fs').accessSync('./out'); console.log('Static export ready in out/');\""
+    "export": "next build",
+    "lint": "eslint"
   },
   "dependencies": {
     "next": "16.0.4",
