@@ -6,8 +6,8 @@ interface PieChartProps {
 export function PieChart({ data, title }: PieChartProps) {
   if (!data || data.length === 0) {
     return (
-      <div className="bg-white/70 backdrop-blur-sm rounded-lg shadow-md p-3 h-full flex items-center justify-center">
-        <p className="text-gray-400 text-xs sm:text-sm">No data</p>
+      <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg shadow-lg p-3 h-full flex items-center justify-center text-white">
+        <p className="text-white/70 text-xs sm:text-sm">No data</p>
       </div>
     );
   }
@@ -37,8 +37,8 @@ export function PieChart({ data, title }: PieChartProps) {
   });
 
   return (
-    <div className="bg-white/70 backdrop-blur-sm rounded-lg shadow-md p-3 h-full flex flex-col">
-      {title && <h3 className="text-xs sm:text-sm font-semibold mb-2 text-gray-800 flex-shrink-0">{title}</h3>}
+    <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg shadow-lg p-3 h-full flex flex-col text-white">
+      {title && <h3 className="text-xs sm:text-sm font-semibold mb-2 flex-shrink-0 drop-shadow">{title}</h3>}
       <div className="flex-1 flex items-center justify-between gap-2 overflow-hidden">
         <svg width="140" height="140" viewBox="0 0 140 140" className="flex-shrink-0">
           {slices.map((slice, index) => (
@@ -49,7 +49,7 @@ export function PieChart({ data, title }: PieChartProps) {
           {data.map((item, index) => (
             <div key={index} className="flex items-center gap-1 flex-shrink-0">
               <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
-              <span className="text-gray-700 truncate">{item.label}: {item.value}</span>
+              <span className="truncate drop-shadow">{item.label}: {item.value}</span>
             </div>
           ))}
         </div>
