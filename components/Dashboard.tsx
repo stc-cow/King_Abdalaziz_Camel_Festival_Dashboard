@@ -2,6 +2,9 @@
 
 import { Ticket } from '@/lib/getTickets';
 import { MetricCard } from '@/components/MetricCard';
+import { BarChart } from '@/components/Charts/BarChart';
+import { PieChart } from '@/components/Charts/PieChart';
+import { LineChart } from '@/components/Charts/LineChart';
 
 interface DashboardProps {
   tickets: Ticket[];
