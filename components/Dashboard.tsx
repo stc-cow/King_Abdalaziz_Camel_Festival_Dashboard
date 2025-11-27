@@ -5,6 +5,8 @@ import { MetricCard } from '@/components/MetricCard';
 import { BarChart } from '@/components/Charts/BarChart';
 import { PieChart } from '@/components/Charts/PieChart';
 import { LineChart } from '@/components/Charts/LineChart';
+import { TicketsTable } from '@/components/TicketsTable';
+import { Map } from '@/components/Map';
 
 interface DashboardProps {
   tickets: Ticket[];
