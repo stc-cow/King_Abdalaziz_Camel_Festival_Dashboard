@@ -22,7 +22,7 @@ const getStatusColor = (status: string) => {
 export function TicketsTable({ tickets }: TicketsTableProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 3;
 
   const filteredTickets = useMemo(() => {
     return tickets.filter(

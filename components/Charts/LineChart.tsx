@@ -13,8 +13,8 @@ export function LineChart({ data, title }: LineChartProps) {
   }
 
   const maxValue = Math.max(...data.map(d => d.value), 1);
-  const chartHeight = 180;
-  const chartWidth = 320;
+  const chartHeight = 150;
+  const chartWidth = 300;
   const padding = 25;
 
   const points = data.map((item, index) => {

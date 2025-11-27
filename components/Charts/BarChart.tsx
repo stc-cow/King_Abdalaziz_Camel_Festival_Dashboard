@@ -13,7 +13,7 @@ export function BarChart({ data, title }: BarChartProps) {
   }
 
   const maxValue = Math.max(...data.map(d => d.value), 1);
-  const chartHeight = 180;
+  const chartHeight = 150;
   const barWidth = Math.max(20, Math.floor(250 / data.length));
   const spacing = Math.max(4, Math.floor((280 - barWidth * data.length) / (data.length + 1)));
 
