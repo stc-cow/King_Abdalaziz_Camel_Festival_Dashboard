@@ -7,7 +7,7 @@ interface MapProps {
   tickets: Ticket[];
 }
 
-export function Map({ tickets }: MapProps) {
+function MapComponent({ tickets }: MapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
